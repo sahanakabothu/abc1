@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Naanna 🤍</title>
+
+<style>
+body{
+  background:#eef3f8;
+  font-family:Segoe UI, sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  margin:0;
+}
+
+h1{
+  color:#1f3a5f;
+  margin-bottom:30px;
+}
+
+/* CARD */
+#card{
+  background:#f7fbff;
+  border:2px solid #9db7d1;
+  border-radius:20px;
+  padding:45px 35px;
+  width:320px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 12px 26px rgba(0,0,0,0.15);
+}
+
+#card span{
+  display:block;
+  margin-top:12px;
+  font-size:14px;
+  color:#375a7f;
+}
+
+/* LETTER */
+#letter{
+  display:none;
+  background:#ffffff;
+  max-width:750px;
+  padding:45px;
+  border-radius:20px;
+  box-shadow:0 14px 35px rgba(0,0,0,0.12);
+  margin-top:30px;
+  text-align:left;
+}
+
+.line{
+  opacity:0;
+  margin-bottom:20px;
+  line-height:1.9;
+  color:#1f2f3f;
+}
+</style>
+</head>
+
+<body>
+
+<h1>For Naanna 🤍</h1>
+
+<div id="card">
+  🤍 A quiet strength I grew up with
+  <span>Tap to open</span>
+</div>
+
+<div id="letter">
+  <p class="line">Naanna,</p>
+  <p class="line">You never spoke much, but your actions taught me everything.</p>
+  <p class="line">Your strength became my safety, your discipline my direction.</p>
+  <p class="line">Even when you didn’t say it, I always felt your support.</p>
+  <p class="line">I carry your values with pride, every single day.</p>
+  <p class="line" style="text-align:right;">— Always your daughter 🤍</p>
+</div>
+
+<script>
+const card = document.getElementById("card");
+const letter = document.getElementById("letter");
+const lines = document.querySelectorAll(".line");
+
+card.onclick = () => {
+  card.style.display = "none";
+  letter.style.display = "block";
+
+  lines.forEach((line, index) => {
+    setTimeout(() => {
+      line.style.opacity = 1;
+    }, index * 800);
+  });
+};
+</script>
+
+</body>
+</html>

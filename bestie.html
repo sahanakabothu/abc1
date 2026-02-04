@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bestie Chaos 💥</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#0f0f14;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+}
+
+/* CENTER BOX */
+.box{
+  background:#1b1b2a;
+  padding:40px;
+  border-radius:22px;
+  width:330px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* BUTTON */
+button{
+  background:#ff4f9a;
+  border:none;
+  padding:12px 22px;
+  border-radius:25px;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+/* CHAOS */
+.shake{
+  animation:shake 0.5s infinite;
+}
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-5px)}
+  50%{transform:translateX(5px)}
+  75%{transform:translateX(-5px)}
+}
+
+/* CHAT */
+.chat{
+  text-align:left;
+}
+.msg{
+  background:#2e2e44;
+  padding:10px 14px;
+  border-radius:16px;
+  margin:10px 0;
+  width:fit-content;
+  max-width:90%;
+  opacity:0;
+}
+
+/* MOODS */
+.soft{background:#fff0f6;color:#4a0033}
+.fun{background:#fff8e1;color:#6b4f00}
+.emotional{
+  background:#ffffff;
+  color:#2b2b2b;
+}
+
+
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation:up 5s linear;
+}
+@keyframes up{
+  to{transform:translateY(-120vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box shake" id="stage1">
+  😈 Don’t click this.
+  <br>
+  <button onclick="chaos()">I will 😏</button>
+</div>
+
+<script>
+let step=0;
+
+function chaos(){
+  document.getElementById("stage1").classList.remove("shake");
+  document.body.style.background="#14001a";
+
+  document.getElementById("stage1").innerHTML=
+  `💥 I warned you.<br><br>
+   Now answer honestly 👀<br>
+   <button onclick="next()">Yes yes 😌</button>`;
+}
+
+function next(){
+  document.getElementById("stage1").innerHTML=
+  `<div class="chat" id="chat"></div>`;
+  chatFlow();
+}
+
+function chatFlow(){
+  const chat=document.getElementById("chat");
+  const texts=[
+    "Hey…",
+    "Can I say something?",
+    "You’re not just my bestie.",
+    "You’re my comfort human 🫶"
+  ];
+
+  texts.forEach((t,i)=>{
+    setTimeout(()=>{
+      const m=document.createElement("div");
+      m.className="msg";
+      m.innerText=t;
+      chat.appendChild(m);
+      setTimeout(()=>m.style.opacity=1,100);
+    },i*900);
+  });
+
+  setTimeout(moodChoice,4200);
+}
+
+function moodChoice(){
+  document.getElementById("stage1").innerHTML=
+  `<h3>Pick a mood 🌈</h3>
+   <button onclick="mood('soft')">💛 Soft</button>
+   <button onclick="mood('fun')">😄 Fun</button>
+   <button onclick="mood('emotional')">🫶 Emotional</button>`;
+}
+
+function mood(type){
+  document.body.className = type;
+
+  const box = document.getElementById("stage1");
+  box.style.background = "#ffffff";   // 👈 THIS IS THE FIX
+  box.style.color = "#2b2b2b";        // readable text
+  box.style.boxShadow = "0 20px 40px rgba(0,0,0,0.4)";
+
+  box.innerHTML =
+  `<p>
+   No matter the mood,<br>
+   you always feel like home.
+   </p>
+   <button onclick="treasure()">One last thing…</button>`;
+}
+
+
+function treasure(){
+  document.getElementById("stage1").innerHTML=
+  `<p>Final question 🗺️</p>
+   <p>Do you know you matter to me… a LOT?</p>
+   <button onclick="final()">Obviously 😌</button>`;
+}
+
+function final(){
+  document.getElementById("stage1").innerHTML=
+  `<h2>Forever stuck with me 💖</h2>
+   <p>
+   Through chaos, silence, laughter & tears —  
+   I choose you, always.
+   </p>`;
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText=["💖","💗","💕"][Math.floor(Math.random()*3)];
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },400);
+}
+</script>
+
+</body>
+</html>

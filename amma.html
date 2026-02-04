@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Amma 💗</title>
+
+<style>
+body{
+  background:#fdf1ec;
+  font-family:Segoe UI, sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  margin:0;
+}
+
+h1{
+  color:#b45309;
+  margin-bottom:30px;
+}
+
+/* CARD */
+#card{
+  background:#fff4ec;
+  border:2px solid #f2b8a2;
+  border-radius:22px;
+  padding:45px 35px;
+  width:300px;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 12px 28px rgba(0,0,0,0.15);
+}
+
+#card span{
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+  color:#a15c38;
+}
+
+/* LETTER */
+#letter{
+  display:none;
+  background:#fffafa;
+  max-width:700px;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 14px 35px rgba(0,0,0,0.12);
+  margin-top:30px;
+  text-align:left;
+}
+
+.line{
+  opacity:0;
+  margin-bottom:18px;
+  line-height:1.8;
+  color:#4a2e1f;
+}
+</style>
+</head>
+
+<body>
+
+<h1>For Amma 🤍</h1>
+
+<div id="card">
+  💗 Some love feels like home
+  <span>Tap to open</span>
+</div>
+
+<div id="letter">
+  <p class="line">Amma,</p>
+  <p class="line">You were my first home and my first comfort.</p>
+  <p class="line">Every sacrifice you made quietly lives inside me.</p>
+  <p class="line">No matter how far I go, I remain your little girl.</p>
+  <p class="line" style="text-align:right;">— With all my love 💗</p>
+</div>
+
+<script>
+const card = document.getElementById("card");
+const letter = document.getElementById("letter");
+const lines = document.querySelectorAll(".line");
+
+card.onclick = () => {
+  card.style.display = "none";
+  letter.style.display = "block";
+
+  lines.forEach((l,i)=>{
+    setTimeout(()=>{
+      l.style.opacity = 1;
+    }, i*800);
+  });
+};
+</script>
+
+</body>
+</html>
